@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "x64\\Debug\\Vector.obj",
+            "outputs": [
+                "x64\\Debug\\Vector.h_46A6B7F3830EA525.ifc.dt.module.json",
+                "x64\\Debug\\Vector.h_46A6B7F3830EA525.ifc.dt.d.json",
+                "x64\\Debug\\Vector.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "C:\\Users\\munus\\source\\repos\\Project1\\Project1\\Vector.h",
+                    "source-path": "c:\\users\\munus\\source\\repos\\project1\\project1\\vector.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

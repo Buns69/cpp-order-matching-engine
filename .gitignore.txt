@@ -1,0 +1,23 @@
+# Ignore Visual Studio temporary files
+.vs/
+out/
+x64/
+Debug/
+Release/
+*.user
+*.aps
+*.idb
+*.pdb
+
+# Ignore CMake build folders
+build/
+cmake-build-debug/
+
+# Ignore compiled executables
+*.exe
+*.dll
+*.lib
+
+# Ignore OS files
+.DS_Store
+Thumbs.db

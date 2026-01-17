@@ -1,0 +1,43 @@
+import socket
+import time
+import random
+
+HOST = '127.0.0.1'  # Localhost
+PORT = 50000        # The same port as C++ server
+
+def run_trader():
+    try:
+        # Connect to C++ Server
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect((HOST, PORT))
+        print(f"Connected to Exchange on {HOST}:{PORT}")
+
+        tickers = ["AAPL", "GOOG", "MSFT", "TSLA"]
+        
+        for i in range(1, 21): # Send 20 orders
+            # Randomize order
+            side = "BUY" if random.random() > 0.5 else "SELL"
+            ticker = random.choice(tickers)
+            price = round(random.uniform(100, 105), 2)
+            amount = random.randint(1, 10)
+            
+            # Format: TYPE TICKER AMOUNT PRICE
+            msg = f"{side} {ticker} {amount} {price}"
+            print(f"Sending: {msg}")
+            
+            # Send to C++
+            s.sendall(msg.encode())
+            
+            # Wait for ACK
+            data = s.recv(1024)
+            print(f"Received: {data.decode().strip()}")
+            
+            time.sleep(0.5) # Wait 0.5 seconds between trades
+
+    except ConnectionRefusedError:
+        print("ERROR: Is the C++ Server running?")
+    finally:
+        s.close()
+
+if __name__ == "__main__":
+    run_trader()
